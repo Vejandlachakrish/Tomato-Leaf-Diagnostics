@@ -1,9 +1,0 @@
-__pycache__/
-*.py[cod]
-env/
-.env
-.DS_Store
-instance/
-*.sqlite3
-training_hist.json
-trained_plant_disease_model.keras

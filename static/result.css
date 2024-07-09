@@ -1,0 +1,139 @@
+/* Global Styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: rgb(232, 232, 232);
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Ensure header, main, and footer are stacked vertically */
+}
+
+header {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 0; /* Ensure no extra padding around the header */
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+nav .nav-list,
+nav .nav-list1 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav .nav-list1 {
+  margin-right: auto; /* Pushes the list to the left */
+}
+
+nav .nav-list1 li {
+  display: flex;
+  align-items: center;
+}
+
+nav .nav-list1 i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+nav .nav-list1 p {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+}
+
+nav .nav-list {
+  margin-left: auto; /* Pushes the list to the right */
+}
+
+nav .nav-list li {
+  margin-left: 0; /* Remove margin between links */
+}
+
+nav .nav-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 15px 20px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+nav .nav-list a:hover {
+  background-color: #45a049;
+}
+
+main {
+  flex: 1; /* Allows main to take up remaining space */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 20px;
+}
+
+.form-container {
+  background-color: #ffffff; /* White background for form container */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 75%; /* Adjust as needed */
+  box-sizing: border-box;
+  overflow: auto; /* Allows scrolling within the form container if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.result-image {
+  margin-top: 20px;
+  max-width: 100%; /* Ensures image does not exceed container width */
+  max-height: 300px; /* Set a max height for the image */
+  object-fit: contain; /* Ensures the image scales properly */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 8px; /* Font size */
+  padding: 1px 0; /* Padding for spacing */
+  text-align: center;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Stick to the bottom */
+  left: 0; /* Full width */
+  width: 100%; /* Full width of the viewport */
+}
+
+footer .container {
+  width: 90%;
+  margin: 0 auto; /* Centered within the footer */
+}
+
+footer .container p {
+  margin: 0;
+  padding: 0.3%;
+}

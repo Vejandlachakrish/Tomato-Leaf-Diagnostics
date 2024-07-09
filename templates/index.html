@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tomato Leaf Diagnostic</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      /* Inline CSS for specific modifications */
+      body {
+        background-size: cover;
+        background-position: center;
+      }
+
+      header {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        text-align: center;
+      }
+
+      .button {
+        background-color: #45a049; /* Updated button color */
+        border: 2px solid #4caf50; /* Border to match button color */
+      }
+
+      .button:hover {
+        background-color: #4caf50;
+        border: 2px solid #45a049; /* Change border on hover */
+      }
+
+      .result-image {
+        border: 5px solid #4caf50; /* Green border around the image */
+      }
+
+      .form-container {
+        background-color: #ffffff; /* White background for form container */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 35%;
+        margin: 0 auto; /* Center the form container */
+        text-align: center;
+      }
+
+      .welcome-container {
+        background-color: none; /* White background for form container */
+        padding: 0;
+        border-radius: 8px;
+        max-width: 35%;
+        margin: 0 auto; /* Center the form container and add margin */
+        text-align: center;
+        opacity: 100%;
+        margin-bottom: 4%;
+      }
+      .welcome-container h1 {
+        padding-bottom: 0%;
+        margin-bottom: 0%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav>
+          <div class="container">
+            <ul class="nav-list1">
+              <li>
+                <i class="fa fa-leaf" style="font-size: 16px; color: white"></i>
+                <p style="color: white; margin: 0">Tomato Leaf Diagnostic</p>
+              </li>
+            </ul>
+            <ul class="nav-list">
+              <li>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+              </li>
+              <li>
+                <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="welcome-container">
+          <h1>Welcome to Tomato Leaf Diagnostic</h1>
+          <p>
+            This AI model will help you in detecting the disease or any
+            abnormality present in the tomato plant from the image of the tomato
+            plant leaf
+          </p>
+        </div>
+        <div class="form-container">
+          <h1>Upload an Image for Disease Recognition</h1>
+          <form
+            action="{{ url_for('predict') }}"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="custom-file-upload">
+              <label for="imageUpload">
+                <i class="fa fa-upload"></i> Upload Image
+              </label>
+              <input
+                type="file"
+                id="imageUpload"
+                name="image"
+                accept="image/*"
+                required
+                onchange="previewImage(event)"
+              />
+            </div>
+            <button
+              type="button"
+              id="viewImageButton"
+              class="button"
+              onclick="viewImage()"
+              style="display: none"
+            >
+              View Image
+            </button>
+            <button type="submit" class="button">Predict</button>
+          </form>
+          <div id="imagePreviewContainer" style="display: none">
+            <h2>Image Preview</h2>
+            <img
+              id="imagePreview"
+              alt="Uploaded Image Preview"
+              class="result-image"
+            />
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="container">
+          <p>&copy; 2024 Plant Disease Recognition. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      function previewImage(event) {
+        const viewImageButton = document.getElementById("viewImageButton");
+        viewImageButton.style.display = "block";
+      }
+
+      function viewImage() {
+        const fileInput = document.getElementById("imageUpload");
+        const imagePreviewContainer = document.getElementById(
+          "imagePreviewContainer"
+        );
+        const imagePreview = document.getElementById("imagePreview");
+
+        if (fileInput.files && fileInput.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            imagePreviewContainer.style.display = "block";
+          };
+          reader.readAsDataURL(fileInput.files[0]);
+        }
+      }
+    </script>
+  </body>
+</html>
